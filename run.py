@@ -19,6 +19,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--encoder', type=str, default='vitl', choices=['vits', 'vitb', 'vitl', 'vitg'])
 
+    parser.add_argument('--save-numpy', dest='save_numpy', action='store_true', help='save the model raw output')
     parser.add_argument('--pred-only', dest='pred_only', action='store_true', help='only display the prediction')
     parser.add_argument('--grayscale', dest='grayscale', action='store_true', help='do not apply colorful palette')
     parser.add_argument('--save-uint16', dest='save_uint16', action='store_true', help='save as 16-bit uint image')
@@ -57,11 +58,15 @@ if __name__ == '__main__':
 
         raw_image = cv2.imread(filename)
 
-        depth = depth_anything.infer_image(raw_image, args.input_size)  # float32
+        depth = depth_anything.infer_image(raw_image, args.input_size)  # affine-invariant inverse depth, float32
         # ic(depth.shape, depth.dtype, depth.min(), depth.max())
 
         depth_uint16 = (depth*UINT16_SCALE_FACTOR).astype(np.uint16)
         # ic(depth_uint16.shape, depth_uint16.dtype, depth_uint16.min(), depth_uint16.max())
+
+        if args.save_numpy:
+            output_path = os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + '_raw_inv_depth.npy')
+            np.save(output_path, depth)
 
         suffix = ''
         if args.save_uint16:
@@ -78,10 +83,11 @@ if __name__ == '__main__':
             depth = (cmap(depth)[:, :, :3] * 255)[:, :, ::-1].astype(np.uint8)
             suffix = '_color'
 
-        if args.pred_only:
-            cv2.imwrite(os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + f'{suffix}.png'), depth)
-        else:
-            split_region = np.ones((raw_image.shape[0], 50, 3), dtype=np.uint8) * 255
-            combined_result = cv2.hconcat([raw_image, split_region, depth])
-            
-            cv2.imwrite(os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + f'_combined.png'), combined_result)
+        output_path = os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + '.png')
+        # if args.pred_only:
+        cv2.imwrite(output_path.replace(".png", f'{suffix}.png'), depth)
+        # else:
+        split_region = np.ones((raw_image.shape[0], 50, 3), dtype=np.uint8) * 255
+        combined_result = cv2.hconcat([raw_image, split_region, depth])
+
+        cv2.imwrite(output_path.replace('.png',  f'_combined.png'), combined_result)
