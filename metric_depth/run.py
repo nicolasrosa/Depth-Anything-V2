@@ -9,6 +9,9 @@ from icecream import ic
 
 from depth_anything_v2.dpt import DepthAnythingV2
 
+# --- Global variables
+UINT16_SCALE_FACTOR = 800
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Depth Anything V2 Metric Depth Estimation')
@@ -56,7 +59,7 @@ if __name__ == '__main__':
 
     cmap = matplotlib.colormaps.get_cmap('Spectral')
 
-    UINT16_SCALE_FACTOR = 800
+    print(f'Processing {len(filenames)} images...')
     for k, filename in enumerate(filenames):
         print(f'Progress {k+1}/{len(filenames)}: {filename}')
 
