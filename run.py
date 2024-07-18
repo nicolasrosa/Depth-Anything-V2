@@ -1,16 +1,20 @@
 import argparse
-import cv2
 import glob
+import os
+
+import cv2
 import matplotlib
 import numpy as np
-import os
 import torch
 from icecream import ic
 
 from depth_anything_v2.dpt import DepthAnythingV2
+from modules.utils import read_json
 
 # --- Global variables
-UINT16_SCALE_FACTOR = 50
+json_filepath = "uint16_scale_factor.json"
+UINT16_SCALE_FACTOR = read_json(json_filepath)['disp']
+# ic(UINT16_SCALE_FACTOR)
 
 
 if __name__ == '__main__':
@@ -64,7 +68,7 @@ if __name__ == '__main__':
         depth = depth_anything.infer_image(raw_image, args.input_size)  # affine-invariant inverse depth, float32
         # ic(depth.shape, depth.dtype, depth.min(), depth.max())
 
-        depth_uint16 = (depth*UINT16_SCALE_FACTOR).astype(np.uint16)
+        depth_uint16 = (depth * UINT16_SCALE_FACTOR).astype(np.uint16)
         # ic(depth_uint16.shape, depth_uint16.dtype, depth_uint16.min(), depth_uint16.max())
 
         if args.save_numpy:

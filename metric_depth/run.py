@@ -1,16 +1,20 @@
 import argparse
-import cv2
 import glob
+import os
+
+import cv2
 import matplotlib
 import numpy as np
-import os
 import torch
 from icecream import ic
 
 from depth_anything_v2.dpt import DepthAnythingV2
+from modules.utils import read_json
 
 # --- Global variables
-UINT16_SCALE_FACTOR = 800
+json_filepath = "../uint16_scale_factor.json"
+UINT16_SCALE_FACTOR = read_json(json_filepath)['depth']
+# ic(UINT16_SCALE_FACTOR)
 
 
 if __name__ == '__main__':
