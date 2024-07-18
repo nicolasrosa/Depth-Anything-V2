@@ -1,1 +1,1 @@
-python run.py --encoder vitl --img-path /home/nicolas/Downloads/cane_field_dataset/auto_annotation/depth_estimation_annotations/Depth-Anything-V2/lasi_images --outdir ../pred_batches/lasi_depth_gt/metric_depth/ --input-size 1080 --pred-only --save-uint16 --max-depth 80
+python run.py --encoder vitl --img-path /home/nicolas/Downloads/cane_field_dataset/auto_annotation/depth_estimation_annotations/Depth-Anything-V2/lasi_images --outdir ../pred_batches/lasi_images/metric_depth/ --input-size 1080 --pred-only --save-uint16 --max-depth 80
