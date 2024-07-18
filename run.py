@@ -33,7 +33,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
+    mps_cond = 'mps' if torch.backends.mps.is_available() else 'cpu'
+    DEVICE = 'cuda' if torch.cuda.is_available() else mps_cond
 
     model_configs = {
         'vits': {'encoder': 'vits', 'features': 64, 'out_channels': [48, 96, 192, 384]},
@@ -97,4 +98,4 @@ if __name__ == '__main__':
         split_region = np.ones((raw_image.shape[0], 50, 3), dtype=np.uint8) * 255
         combined_result = cv2.hconcat([raw_image, split_region, depth])
 
-        cv2.imwrite(output_path.replace('.png',  f'_combined.png'), combined_result)
+        cv2.imwrite(output_path.replace('.png',  '_combined.png'), combined_result)
