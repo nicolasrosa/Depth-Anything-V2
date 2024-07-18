@@ -1,15 +1,17 @@
 import argparse
 import glob
 import os
+import sys
 
 import cv2
 import matplotlib
 import numpy as np
 import torch
-from icecream import ic
 
 from depth_anything_v2.dpt import DepthAnythingV2
-from modules.utils import read_json
+
+sys.path.append('..')
+from modules.utils import read_json  # noqa
 
 # --- Global variables
 json_filepath = "../uint16_scale_factor.json"
