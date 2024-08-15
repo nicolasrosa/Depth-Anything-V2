@@ -73,13 +73,13 @@ if __name__ == '__main__':
         # ic(depth_uint16.shape, depth_uint16.dtype, depth_uint16.min(), depth_uint16.max())
 
         if args.save_numpy:
-            output_path = os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + '_raw_inv_depth.npy')
+            output_path = os.path.join(args.outdir, f'{os.path.splitext(os.path.basename(filename))[0]}_raw_inv_depth.npy')
             np.save(output_path, depth)
 
         suffix = ''
         if args.save_uint16:
             suffix = '_uint16'
-            cv2.imwrite(os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + f'{suffix}.png'), depth_uint16)
+            cv2.imwrite(os.path.join(args.outdir, f'{os.path.splitext(os.path.basename(filename))[0]}{suffix}.png'), depth_uint16)
 
         depth = (depth - depth.min()) / (depth.max() - depth.min()) * 255.0
         depth = depth.astype(np.uint8)
@@ -91,7 +91,7 @@ if __name__ == '__main__':
             depth = (cmap(depth)[:, :, :3] * 255)[:, :, ::-1].astype(np.uint8)
             suffix = '_color'
 
-        output_path = os.path.join(args.outdir, os.path.splitext(os.path.basename(filename))[0] + '.png')
+        output_path = os.path.join(args.outdir, f'{os.path.splitext(os.path.basename(filename))[0]}.png')
         # if args.pred_only:
         cv2.imwrite(output_path.replace(".png", f'{suffix}.png'), depth)
         # else:
