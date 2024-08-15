@@ -1,4 +1,4 @@
 {
-  "disp": 50,
-  "depth": 800
+  "inv_depth": 50,
+  "metric_depth": 800
 }
