@@ -1,0 +1,1 @@
+python run.py --encoder vitl --img-path /home/nicolas/Downloads/cane_field_dataset/auto_annotation/instance_segmentation_annotations/images_additional --outdir ../predictions/cane_field_dataset_images_images_additional --input-size 1080 --pred-only --save-uint16 --max-depth 80

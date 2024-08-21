@@ -1,1 +1,0 @@
-python run.py --encoder vitl --img-path /media/lasi/LASI-USP1/Rota2030\ -\ Scania/cane_field_dataset/new_images --outdir /media/lasi/LASI-USP1/Rota2030\ -\ Scania/cane_field_dataset/predictions/metric_depth/new_images --input-size 1080 --pred-only --save-uint16 --max-depth 80
