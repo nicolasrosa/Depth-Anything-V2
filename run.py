@@ -13,7 +13,7 @@ from modules.utils import read_json
 
 # --- Global variables
 json_filepath = "uint16_scale_factor.json"
-UINT16_SCALE_FACTOR = read_json(json_filepath)['disp']
+UINT16_SCALE_FACTOR = read_json(json_filepath)['inv_depth']
 # ic(UINT16_SCALE_FACTOR)
 
 
