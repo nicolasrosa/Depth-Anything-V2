@@ -1,0 +1,13 @@
+#!/bin/bash
+RESULTS_DIRPATH="/home/nicolas/SynologyDrive/Rota2030 - Scania/cane_field_dataset/results/"
+INV_DEPTH_PREDICTIONS_DIRPATH="predictions/inv_depth/"
+
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1229_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/flickr.com/" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1230_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/Pexels" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1231_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/pixabay" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1232_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/rawpixel" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1234_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/Unsplash" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1235_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/Wikimedia Commons" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1236_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/flickr.com/" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1237_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/Pexels" --input-size 1080 --pred-only --save-uint16
+python3 run.py --encoder vitl --img-path "${RESULTS_DIRPATH}lasi_images/v1.1_2fps/images_extracted_filtered/IMG_1238_frames" --outdir "${INV_DEPTH_PREDICTIONS_DIRPATH}/cane_field_dataset_images_additional_uploaded_on_roboflow/pixabay" --input-size 1080 --pred-only --save-uint16
