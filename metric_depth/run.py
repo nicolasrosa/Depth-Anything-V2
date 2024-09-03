@@ -70,6 +70,10 @@ if __name__ == '__main__':
     for k, filename in enumerate(filenames):
         print(f'Progress {k+1}/{len(filenames)}: {filename}')
 
+        # Check if the file is a folder
+        if os.path.isdir(filename):
+            continue
+
         raw_image = cv2.imread(filename)
 
         depth = depth_anything.infer_image(raw_image, args.input_size)  # metric depth, float32
