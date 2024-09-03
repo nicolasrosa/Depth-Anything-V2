@@ -62,6 +62,10 @@ if __name__ == '__main__':
 
     print(f'Processing {len(filenames)} images...')
     for k, filename in enumerate(filenames):
+        # Check if the file is a folder
+        if os.path.isdir(filename):
+            continue
+
         print(f'Progress {k+1}/{len(filenames)}: {filename}')
 
         raw_image = cv2.imread(filename)
